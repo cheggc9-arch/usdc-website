@@ -9388,7 +9388,7 @@ function Td() {
               className: "mb-12 px-6 py-3 bg-gray-100 rounded-full mt-8",
               children: g.jsx("p", {
                   className: "text-lg font-medium text-gray-700",
-                  children: "daily episodes posted on X"
+                  children: "your daily dose of unemployment"
               })
           }), g.jsx("img", {
               src: "images/usdc_image.png",
