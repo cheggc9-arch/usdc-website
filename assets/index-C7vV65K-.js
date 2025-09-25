@@ -9298,15 +9298,15 @@ function Td() {
       r(0);
       const o = setInterval( () => {
           r(i => i >= 100 ? (clearInterval(o),
-          100) : i + Math.random() * 10)
+          100) : i + Math.random() * 4)
       }
-      , 100)
+      , 150)
   }
   ;
   return g.jsxs("div", {
       className: "min-h-screen text-black font-mono overflow-x-hidden",
       style: {
-          backgroundColor: "#fcfbfc"
+          backgroundColor: "#e0f2fe"
       },
       children: [g.jsx("style", {
           children: `
@@ -9317,7 +9317,13 @@ function Td() {
           animation: spin 2s linear infinite;
         }
         .glow {
-          filter: drop-shadow(0 0 10px #24926f) drop-shadow(0 0 20px #24926f) drop-shadow(0 0 30px #24926f);
+          filter: drop-shadow(0 0 10px #2c77c1) drop-shadow(0 0 20px #2c77c1) drop-shadow(0 0 30px #2c77c1);
+        }
+        .coin-mask {
+          border-radius: 9999px;
+          -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 98%, transparent 100%);
+                  mask-image: radial-gradient(circle at 50% 50%, #000 98%, transparent 100%);
+          background-color: #ffffff;
         }
         @keyframes spin {
           from { transform: rotate(360deg); }
@@ -9330,7 +9336,37 @@ function Td() {
           animation: shake 0.5s ease-in-out infinite;
         }
         .pump-glow {
-          filter: drop-shadow(0 0 10px #24926f) drop-shadow(0 0 20px #24926f);
+          filter: drop-shadow(0 0 10px #2c77c1) drop-shadow(0 0 20px #2c77c1);
+        }
+        .scroll-arrow {
+          display: inline-block;
+          color: #000000;
+          animation: bounce 1.2s ease-in-out infinite;
+        }
+        .cult-button {
+          transition: all 0.3s ease;
+        }
+        .cult-button:hover {
+          box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+          transform: scale(1.05);
+        }
+        .cult-button {
+          animation: pulse-glow 2s ease-in-out infinite;
+        }
+        .meter-box {
+          border: 2px solid #000000;
+        }
+        @keyframes pulse-glow {
+          0%, 100% { 
+            box-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
+          }
+          50% { 
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+          }
+        }
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(8px); }
         }
         @keyframes shake {
           0%, 100% { transform: translateX(0); }
@@ -9347,21 +9383,18 @@ function Td() {
                   children: "daily episodes posted on X"
               })
           }), g.jsx("img", {
-              src: "https://pbs.twimg.com/media/G1poJl_bcAAtC8H?format=png&name=small",
+              src: "images/usdc_image.png",
               alt: "Unemployed Degen Traders logo",
-              className: "w-48 h-48 md:w-64 md:h-64 mb-12 spin"
+              className: "w-48 h-48 md:w-64 md:h-64 mb-12 spin coin-mask"
           }), g.jsx("h1", {
               className: "text-4xl md:text-6xl font-bold mb-6",
               style: {
-                  color: "#24926f"
+                  color: "#2c77c1"
               },
-              children: "UNEMPLOYED SOLANA DEGEN TRADERS"
-          }), g.jsx("p", {
-              className: "text-3xl md:text-4xl max-w-3xl leading-relaxed mb-4",
-              children: "the cult community"
-          }), g.jsx("p", {
+              children: "UNEMPLOYED SOLANA DEGEN CULT (USDC)"
+          }), null, g.jsx("p", {
               className: "text-xl md:text-2xl text-gray-600 mb-8",
-              children: "we lost our jobs to solana memecoins"
+              children: g.jsxs(el.Fragment, { children: ["while stablecoins stay stable, ", g.jsx("span", { style: { textDecoration: "underline" }, children: "we stay unstable" })] })
           }), g.jsx("p", {
               className: "text-lg md:text-xl text-gray-500 mb-8",
               children: "CA: BFLALSPJkhgmd1AQot1LJ2UTP8E4bWPwJuCnMoS5pump"
@@ -9383,7 +9416,7 @@ function Td() {
                       href: "https://x.com/i/communities/1971008403666325668",
                       target: "_blank",
                       rel: "noopener noreferrer",
-                      className: "inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-xl font-bold transition-colors duration-300",
+                      className: "inline-flex items-center bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-full text-xl font-bold transition-colors duration-300",
                       children: "X community"
                   })]
               })
@@ -9391,93 +9424,97 @@ function Td() {
               className: "mt-12 max-w-md mx-auto",
               children: [g.jsx("button", {
                   onClick: l,
-                  className: "hover:bg-opacity-80 text-white px-6 py-3 rounded-full text-lg font-bold transition-colors duration-300 mb-6",
+                  className: "cult-button hover:bg-opacity-80 text-white px-6 py-3 rounded-full text-lg font-bold mb-6",
                   style: {
-                      backgroundColor: "#24926f"
+                      backgroundColor: "#ef4444"
                   },
-                  children: "check cult membership level"
-              }), e && g.jsxs("div", {
-                  className: "bg-gray-100 p-6 rounded-lg",
+              children: "INITIATE CULT!!"
+            }), g.jsx("div", {
+                className: "flex justify-center mt-2 mb-6",
+                children: g.jsx("span", { className: "text-3xl scroll-arrow", children: "▼" })
+            }), e && g.jsxs("div", {
+                  className: "p-6 rounded-lg meter-box",
+                  style: { backgroundColor: "#f3f4f6" },
                   children: [g.jsx("h3", {
                       className: "text-xl font-bold mb-4",
-                      children: "unemployment cult meter"
+                      children: "cult initiation meter"
                   }), g.jsxs("div", {
                       className: "relative bg-gray-300 h-8 rounded-full overflow-hidden mb-4",
                       children: [g.jsx("div", {
                           className: `meter-bar h-full ${n >= 90 ? "glow" : ""}`,
                           style: {
                               width: `${Math.min(n, 100)}%`,
-                              background: "linear-gradient(to right, #24926f, #1a6b52, #ff6b6b)"
+                              background: "linear-gradient(to right, #2c77c1, #1a6b52, #ff6b6b)"
                           }
                       }), n >= 90 && g.jsx("div", {
                           className: "absolute left-0 top-0 h-full w-full animate-pulse glow",
                           style: {
-                              backgroundColor: "#24926f"
+                              backgroundColor: "#2c77c1"
                           }
                       })]
                   }), g.jsxs("div", {
                       className: "text-center",
-                      children: [n < 50 && g.jsx("p", {
+                      style: { minHeight: "2rem", width: "300px" },
+                      children: [n < 15 && g.jsx("p", {
                           className: "text-lg",
-                          children: "calculating cult devotion..."
-                      }), n >= 50 && n < 80 && g.jsx("p", {
+                          children: "updating unemployment status…"
+                      }), n >= 15 && n < 30 && g.jsx("p", {
                           className: "text-lg",
-                          style: {
-                              color: "#24926f"
-                          },
-                          children: "getting more degenerate"
-                      }), n >= 80 && n < 90 && g.jsx("p", {
-                          className: "text-lg text-red-600",
-                          children: "maximum unemployment achieved"
-                      }), n >= 90 && g.jsxs("div", {
+                          children: "loading ramen noodles…"
+                      }), n >= 30 && n < 45 && g.jsx("p", {
+                          className: "text-lg",
+                          children: "verifying degen credentials…"
+                      }), n >= 45 && n < 60 && g.jsx("p", {
+                          className: "text-lg",
+                          children: "injecting hopium…"
+                      }), n >= 60 && n < 75 && g.jsx("p", {
+                          className: "text-lg",
+                          children: "synchronizing cope levels…"
+                      }), n >= 75 && n < 90 && g.jsx("p", {
+                          className: "text-lg",
+                          children: "uploading meme history…"
+                      }), n >= 90 && n < 100 && g.jsx("p", {
+                          className: "text-lg",
+                          children: "confirming chart addiction…"
+                      }), n >= 100 && g.jsxs("div", {
                           className: "space-y-2",
                           children: [g.jsx("p", {
-                              className: "text-xl font-bold glow",
+                              className: "text-xl font-bold",
                               style: {
-                                  color: "#24926f"
+                                  color: "#2c77c1"
                               },
-                              children: "CULT LEADER UNLOCKED"
+                              children: "RITUAL COMPLETE!!!"
                           }), g.jsx("p", {
                               className: "text-lg",
                               children: "🔥 UNEMPLOYED AF 🔥"
                           }), g.jsx("p", {
                               className: "text-base text-gray-600",
-                              children: "welcome to the inner circle"
+                              children: "welcome to the cult"
                           })]
                       })]
                   })]
               })]
+          }), e && g.jsx("div", {
+              className: "flex justify-center mt-2 mb-6",
+              children: g.jsx("span", { className: "text-3xl scroll-arrow", children: "▼" })
           })]
       }), g.jsx("section", {
           className: "min-h-screen flex flex-col justify-center items-center px-8 text-center",
-          children: g.jsxs("div", {
-              className: "max-w-2xl space-y-12 text-4xl md:text-5xl leading-relaxed",
-              children: [g.jsx("p", {
-                  children: "wake up at 2pm"
-              }), g.jsx("p", {
-                  children: "check solana charts"
-              }), g.jsx("p", {
-                  children: "lose more money"
-              }), g.jsx("p", {
-                  children: "repeat tomorrow"
-              })]
-          })
-      }), g.jsx("section", {
-          className: "min-h-screen flex flex-col justify-center items-center px-8 text-center bg-gray-50",
+          style: { backgroundColor: "#f3f4f6" },
           children: g.jsxs("div", {
               className: "max-w-3xl space-y-12 text-4xl md:text-5xl leading-relaxed",
               children: [g.jsx("p", {
-                  children: "tether just hit $500B valuation"
+              children: g.jsxs(el.Fragment, { children: [g.jsx("span", { style: { color: "#2c77c1" }, children: "USDC" }), " is stable, ", g.jsx("span", { style: { textDecoration: "underline", color: "#ef4444" }, children: "we are not" })] })
               }), g.jsx("p", {
-                  children: "tied with openai"
+                  children: "while normies flex paychecks"
               }), g.jsx("p", {
-                  children: "meanwhile we're eating ramen"
+                  children: "we flex liquidations"
               }), g.jsx("p", {
                   className: "text-3xl md:text-4xl",
                   style: {
-                      color: "#24926f"
+                      color: "#2c77c1"
                   },
-                  children: "but we're part of history"
+                  children: "but at least we’re part of a cult"
               })]
           })
       }), g.jsx("section", {
@@ -9487,9 +9524,9 @@ function Td() {
               children: [g.jsx("h2", {
                   className: "text-5xl md:text-7xl font-bold mb-16",
                   style: {
-                      color: "#24926f"
+                      color: "#2c77c1"
                   },
-                  children: "SOLANA CULT"
+                  children: "USDC CULT"
               }), g.jsx("p", {
                   className: "text-4xl md:text-5xl",
                   children: "for the unemployed"
@@ -9499,17 +9536,18 @@ function Td() {
               })]
           })
       }), g.jsx("section", {
-          className: "min-h-screen flex flex-col justify-center items-center px-8 text-center bg-gray-50",
+          className: "min-h-screen flex flex-col justify-center items-center px-8 text-center",
+          style: { backgroundColor: "#f3f4f6" },
           children: g.jsxs("div", {
               className: "max-w-2xl space-y-12 text-4xl md:text-5xl leading-relaxed",
               children: [g.jsx("h2", {
                   className: "text-5xl md:text-6xl font-bold mb-16",
                   style: {
-                      color: "#24926f"
+                      color: "#2c77c1"
                   },
                   children: "CULT RULES"
               }), g.jsx("p", {
-                  children: "check charts every 5 minutes"
+                  children: "touching grass is prohibited"
               }), g.jsx("p", {
                   children: "diamond hands syndrome required"
               }), g.jsx("p", {
@@ -9523,33 +9561,38 @@ function Td() {
               children: [g.jsx("h2", {
                   className: "text-5xl md:text-6xl font-bold mb-16",
                   style: {
-                      color: "#24926f"
+                      color: "#2c77c1"
                   },
-                  children: "CULT STUDIES SHOW"
+                  children: "CULT RESEARCH"
               }), g.jsx("p", {
-                  children: "99% of us are broke"
+                  children: "98% broke"
               }), g.jsx("p", {
+                  children: "2% lying"
+              }), g.jsx("p", {
+                  style: { textDecoration: "underline" },
                   children: "100% still believe"
               })]
           })
       }), g.jsx("section", {
-          className: "min-h-screen flex flex-col justify-center items-center px-8 text-center bg-gray-50",
+          className: "min-h-screen flex flex-col justify-center items-center px-8 text-center",
+          style: { backgroundColor: "#f3f4f6" },
           children: g.jsxs("div", {
               className: "max-w-2xl space-y-12 text-4xl md:text-5xl leading-relaxed",
               children: [g.jsx("h2", {
                   className: "text-5xl md:text-6xl font-bold mb-16",
                   style: {
-                      color: "#24926f"
+                      color: "#2c77c1"
                   },
                   children: "WARNING"
               }), g.jsx("p", {
-                  children: "highly addictive cult"
+                  className: "font-bold",
+                  children: "side effects include:"
               }), g.jsx("p", {
-                  children: "once you join"
+                  children: "chart addiction"
               }), g.jsx("p", {
-                  children: "you never go back"
+                  children: "chart-induced schizophrenia"
               }), g.jsx("p", {
-                  children: "to having a real job"
+                  children: "lifelong addiction to hopium"
               })]
           })
       }), g.jsx("section", {
@@ -9557,71 +9600,85 @@ function Td() {
           children: g.jsxs("div", {
               className: "max-w-2xl space-y-12 text-4xl md:text-5xl leading-relaxed",
               children: [g.jsx("h2", {
-                  className: "text-5xl md:text-6xl font-bold mb-16",
-                  style: {
-                      color: "#24926f"
-                  },
-                  children: "THE HOPE"
+              className: "text-5xl md:text-6xl font-bold mb-16",
+              style: {
+                  color: "#2c77c1"
+              },
+              children: "THE PROPHECY"
               }), g.jsx("p", {
-                  children: "while tether makes billions"
+                  children: "bags turn to millions"
               }), g.jsx("p", {
-                  children: "we make memes"
+                  children: "copium becomes currency"
               }), g.jsx("p", {
-                  children: "join the unemployed cult"
+                  children: "memes write history"
               }), g.jsx("p", {
-                  children: "before you get a job"
+                  className: "font-bold",
+                  style: { color: "#ef4444" },
+                  children: "the cult never dies"
               })]
           })
       }), g.jsx("section", {
-          className: "min-h-screen flex flex-col justify-center items-center px-8 text-center bg-gray-50",
+          className: "min-h-screen flex flex-col justify-center items-center px-8 text-center",
+          style: { backgroundColor: "#f3f4f6" },
           children: g.jsxs("div", {
               className: "max-w-2xl space-y-12",
               children: [g.jsx("h2", {
-                  className: "text-4xl md:text-6xl font-bold mb-8",
-                  style: {
-                      color: "#24926f"
-                  },
-                  children: "UNEMPLOYED SOLANA DEGEN TRADERS"
+              className: "text-4xl md:text-6xl font-bold mb-8",
+              style: {
+                  color: "#2c77c1"
+              },
+                  children: "UNEMPLOYED SOLANA DEGEN CULT (USDC)"
               }), g.jsx("p", {
                   className: "text-2xl md:text-3xl mb-8",
-                  children: "cult community • broke together"
+                  children: "forever employed by charts"
               }), g.jsx("div", {
                   className: "space-y-6",
                   children: g.jsx("div", {
                       className: "flex flex-wrap justify-center gap-4",
-                      children: g.jsx("a", {
+                      children: [g.jsx("a", {
+                          href: "https://pump.fun",
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "inline-flex items-center bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-full text-xl font-bold transition-colors duration-300",
+                          children: [g.jsx("img", {
+                              src: "https://upload.wikimedia.org/wikipedia/en/b/bd/Pump_fun_logo.png",
+                              alt: "Unemployed Degen Traders",
+                              className: "w-6 h-6 mr-3 spin glow"
+                          }), "buy on pump"]
+                      }), g.jsx("a", {
                           href: "https://x.com/usdt_pump",
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-xl font-bold transition-colors duration-300",
+                          className: "inline-flex items-center bg-black hover:bg-gray-800 text-white px-8 py-4 rounded-full text-xl font-bold transition-colors duration-300",
                           children: "follow on X"
-                      })
+                      })]
                   })
               }), g.jsx("p", {
-                  className: "text-2xl",
-                  style: {
-                      color: "#24926f"
-                  },
+              className: "text-2xl",
+              style: {
+                  color: "#2c77c1"
+              },
                   children: "cult approved"
               }), g.jsx("p", {
                   className: "text-base text-gray-600",
-                  children: "the unemployment that actually pays (in hopium)"
+                  children: "the only unemployment that pays (in hopium dividends)"
               })]
           })
       }), g.jsxs("footer", {
-          className: "bg-white py-12 text-center border-t",
+          className: "py-12 text-center border-t",
+          style: { backgroundColor: "#e0f2fe" },
           children: [g.jsx("p", {
               className: "text-2xl font-bold",
               style: {
-                  color: "#24926f"
+                  color: "#2c77c1"
               },
-              children: "UNEMPLOYED SOLANA DEGEN TRADERS"
+              children: "UNEMPLOYED SOLANA DEGEN CULT (USDC)"
           }), g.jsx("p", {
               className: "text-lg text-gray-600 mt-2",
-              children: "cult community • broke together"
+              children: "forever employed by charts"
           }), g.jsx("p", {
               className: "text-sm text-gray-500 mt-4",
-              children: "while tether hits $500B, we hit refresh on our portfolios"
+              children: g.jsxs(el.Fragment, { children: ["while stablecoins stay stable, ", g.jsx("span", { style: { textDecoration: "underline" }, children: "we stay unstable" })] })
           })]
       })]
   })
