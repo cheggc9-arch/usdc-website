@@ -9300,13 +9300,21 @@ function Td() {
           r(i => i >= 100 ? (clearInterval(o),
           100) : i + Math.random() * 4)
       }
-      , 150)
+      , 150);
+      setTimeout(() => {
+          const meterBox = document.querySelector('.meter-box');
+          if (meterBox) {
+              const rect = meterBox.getBoundingClientRect();
+              const scrollTop = window.pageYOffset + rect.top - window.innerHeight * 0.3;
+              window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+          }
+      }, 100);
   }
   ;
   return g.jsxs("div", {
       className: "min-h-screen text-black font-mono overflow-x-hidden",
       style: {
-          backgroundColor: "#e0f2fe"
+          backgroundColor: "#ffffff"
       },
       children: [g.jsx("style", {
           children: `
@@ -9434,7 +9442,7 @@ function Td() {
                 children: g.jsx("span", { className: "text-3xl scroll-arrow", children: "▼" })
             }), e && g.jsxs("div", {
                   className: "p-6 rounded-lg meter-box",
-                  style: { backgroundColor: "#f3f4f6" },
+                  style: { backgroundColor: "#f9fafb" },
                   children: [g.jsx("h3", {
                       className: "text-xl font-bold mb-4",
                       children: "cult initiation meter"
@@ -9500,7 +9508,7 @@ function Td() {
           })]
       }), g.jsx("section", {
           className: "min-h-screen flex flex-col justify-center items-center px-8 text-center",
-          style: { backgroundColor: "#f3f4f6" },
+          style: { backgroundColor: "#f9fafb" },
           children: g.jsxs("div", {
               className: "max-w-3xl space-y-12 text-4xl md:text-5xl leading-relaxed",
               children: [g.jsx("p", {
@@ -9537,7 +9545,7 @@ function Td() {
           })
       }), g.jsx("section", {
           className: "min-h-screen flex flex-col justify-center items-center px-8 text-center",
-          style: { backgroundColor: "#f3f4f6" },
+          style: { backgroundColor: "#f9fafb" },
           children: g.jsxs("div", {
               className: "max-w-2xl space-y-12 text-4xl md:text-5xl leading-relaxed",
               children: [g.jsx("h2", {
@@ -9575,7 +9583,7 @@ function Td() {
           })
       }), g.jsx("section", {
           className: "min-h-screen flex flex-col justify-center items-center px-8 text-center",
-          style: { backgroundColor: "#f3f4f6" },
+          style: { backgroundColor: "#f9fafb" },
           children: g.jsxs("div", {
               className: "max-w-2xl space-y-12 text-4xl md:text-5xl leading-relaxed",
               children: [g.jsx("h2", {
@@ -9619,7 +9627,7 @@ function Td() {
           })
       }), g.jsx("section", {
           className: "min-h-screen flex flex-col justify-center items-center px-8 text-center",
-          style: { backgroundColor: "#f3f4f6" },
+          style: { backgroundColor: "#f9fafb" },
           children: g.jsxs("div", {
               className: "max-w-2xl space-y-12",
               children: [g.jsx("h2", {
@@ -9666,7 +9674,7 @@ function Td() {
           })
       }), g.jsxs("footer", {
           className: "py-12 text-center border-t",
-          style: { backgroundColor: "#e0f2fe" },
+          style: { backgroundColor: "#ffffff" },
           children: [g.jsx("p", {
               className: "text-2xl font-bold",
               style: {
